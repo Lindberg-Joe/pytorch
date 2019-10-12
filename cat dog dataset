@@ -5,13 +5,6 @@ import numpy as np
 from torch.utils import data
 from torchvision import transforms as T
 
-transform = T.Compose([
-    T.Resize(224),
-    T.CenterCrop(224),
-    T.ToTensor(),#自动归一化
-    T.Normalize(mean=[.5,.5,.5], std=[.5,.5,.5])#标准化至[-1,1]
-])
-
 class DogCat (data.Dataset):
     def __init__(self,root,transforms=None):
         imgs = os.listdir(root)#所有图片的路径，不实际加载图片，只是指定路径，调用getitem时才真正读图片
